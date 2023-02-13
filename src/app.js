@@ -1,7 +1,11 @@
 const express = require('express');
+import router from './routes/router';
 
 const app = express();
 
+app.use(express.json());
+
+app.use(router);
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();
