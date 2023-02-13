@@ -50,5 +50,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "1ae3c7c7-713d-450a-be76-e6d3d5d249e9",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products Copy Copy Copy",
+    "url": "http://localhost:3000/products/1",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-02-13T18:55:19.171Z",
+    "modified": "2023-02-13T23:37:02.494Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
