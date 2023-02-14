@@ -54,7 +54,15 @@ const result = await productsService.getAll()
       expect(message.message).to.be.deep.equal('Product not found');
     });
   });
-
+  describe('', function () {
+    it('', async function () {
+     
+    });
+  }); describe('', function () {
+    it('', async function () {
+      
+    });
+  });
   afterEach(function () {
     sinon.restore();
   });
