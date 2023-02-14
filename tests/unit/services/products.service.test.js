@@ -37,9 +37,21 @@ const result = await productsService.getAll()
   });
 
   describe('', function () {
-    it('', async function () {
-     
-      sinon.restore();
+    it('testa falha de getbyid', async function () {
+      sinon.stub(productModel, 'getById').resolves({ type: 'error', message: 'Product not found' })
+      const { message } = await productsService.getById(666)
+
+      expect(message).to.be.deep.equal({ type: 'error', message: 'Product not found' })
+      expect(message.type).to.be.deep.equal('error');
+      expect(message.message).to.be.deep.equal('Product not found');
+    });
+  });
+  describe('', function () {
+    it('testa falha de create', async function () {
+      sinon.stub(productModel, 'CreateProduct').resolves({ type: 'error', message: 'Product not found' })
+      const { message } = await productsService.CreateProduct(555)
+      expect(message.type).to.be.deep.equal('error');
+      expect(message.message).to.be.deep.equal('Product not found');
     });
   });
 
