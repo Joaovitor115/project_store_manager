@@ -44,7 +44,16 @@ const deleteProduct = async (id) => {
   await productsModel.deleteProduct(Number(id));
   return { type: null, message: '' };
 };
-
+const getSaleById = async (id) => {
+  const result = await productsModel.getSaleById(id);
+  if (result.length === 0) { return { type: 'sale_not_found', message: 'Sale not found' }; }
+  return { type: null, message: result };
+};
+const getAllSales = async () => {
+  const result = await productsModel.getAllSales();
+  if (result.length === 0) { return { type: 'sale_not_found', message: 'Sale not found' }; }
+  return { type: null, message: result };
+};
 module.exports = {
   getAll,
   getById,
@@ -52,4 +61,6 @@ module.exports = {
   updateProduct,
   deleteProduct,
   getByName,
+  getAllSales,
+  getSaleById,
 };

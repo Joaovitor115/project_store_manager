@@ -1,8 +1,7 @@
 const { productrouter } = require('./router');
 const { salesRouter } = require('./sales.router');
 
-module.export = {
+module.exports = {
   productrouter,
   salesRouter,
-  
 };

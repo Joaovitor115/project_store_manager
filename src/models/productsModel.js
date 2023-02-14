@@ -38,6 +38,25 @@ const deleteProduct = async (id) => {
     'DELETE FROM StoreManager.products WHERE id = ?;', [id],
   );
 };
+const getAllSales = async () => {
+  const [result] = await connection.execute(
+    `SELECT s.sale_id AS saleId, sa.date, s.product_id AS productId, s.quantity
+     FROM StoreManager.sales_products AS s
+     INNER JOIN StoreManager.sales AS sa ON s.sale_id = sa.id
+     ORDER BY saleId, productId `,
+  );
+  return result;
+};
+const getSaleById = async (id) => {
+  const [result] = await connection.execute(
+    `SELECT sa.date, s.product_id as productId, s.quantity
+     FROM StoreManager.sales_products AS s 
+     INNER JOIN StoreManager.sales AS sa 
+     ON s.sale_id = sa.id WHERE sa.id = ?
+     ORDER BY sale_id, productId `, [id],
+  );
+  return result;
+};
 
 module.exports = {
   getAll,
@@ -46,4 +65,6 @@ module.exports = {
   getByName,
   updateProduct,
   deleteProduct,
+  getAllSales,
+  getSaleById,
 };
