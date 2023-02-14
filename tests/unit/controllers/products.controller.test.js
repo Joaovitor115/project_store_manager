@@ -1,13 +1,15 @@
 const { expect } = require('chai');
 const chai = require('chai')
+const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const productsService = require('../../../src/services/productsService');
 const productsController = require('../../../src/controllers/productsController')
-const { findAllReturn } = require('../models/model.mock');
-
+const { findAllReturn, findOneResult } = require('../models/model.mock');
+const app = require('../../../src/app')
 
 chai.use(sinonChai)
+chai.use(chaiHttp)
 
 describe('Verificando service products', function () {
 
@@ -28,8 +30,15 @@ describe('Verificando service products', function () {
      
     });
 
-    it('', async function () {
+    it('testa a func getById', async function () {
+      req = {}
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
 
+      sinon.stub(productsService, 'getById').resolves({ type: null, message: findOneResult })
+      const response = await chai.request(app).get('/products/1')
+      expect(response.status).to.be.equal
     });
   });
 

@@ -12,7 +12,11 @@ const findAllReturn = [
     "name": "Escudo do Capitão América"
   }
 ]
-
+const findOneResult = {
+  "id": 1,
+  "name": "Martelo de Thor"
+}
 module.exports = {
-findAllReturn,
+  findAllReturn,
+  findOneResult
 }
