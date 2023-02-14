@@ -23,7 +23,20 @@ describe('Testes de unidade do model de products', function () {
 
   });
 
-  it('', async function () {
+  it('test get by name', async function () {
+   sinon.stub(connection, "execute").resolves([[modelMock.findOneResult]])
+   const result = await productModel.getById(modelMock.findOneResult.name)
+    expect(result).to.be.deep.equal(modelMock.findOneResult);
+  });
+   it('testa create', async function () {
+   sinon.stub(connection, "execute").resolves([[modelMock.findOneResult]])
+   const result = await productModel.CreateProduct(modelMock.findOneResult.name)
+    expect(result).to.be.deep.equal(modelMock.findOneResult);
+  });
+   it('', async function () {
+   
+  });
+   it('', async function () {
    
   });
 

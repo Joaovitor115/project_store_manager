@@ -38,20 +38,38 @@ describe('Verificando service products', function () {
 
       sinon.stub(productsService, 'getById').resolves({ type: null, message: findOneResult })
       const response = await chai.request(app).get('/products/1')
-      expect(response.status).to.be.equal
+      expect(response.status).to.be.equal(200)
+      expect(response.body).to.be.deep.equal({ id: 1, name: 'Martelo de Thor' });
     });
   });
 
   describe('', function () {
     it('', async function () {
+      req = {}
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
 
+      sinon.stub(productsService, 'CreateProduct').resolves({ type: 'error', message: 'Product not found' })
+      const response = await chai.request(app).post('/products')
+      expect(response.status).to.be.equal(400)
+      expect(response.body).to.be.deep.equal({ message: '"name" is required' });
       sinon.restore();
     });
   });
 
   describe('', function () {
     it('', async function () {
+      req = {}
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
 
+      sinon.stub(productsService, 'CreateProduct').resolves({ type: null, message: findOneResult })
+      const response = await chai.request(app).post('/products').send({name: 'paofo'})
+      expect(response.status).to.be.equal(201)
+      expect(response.body).to.be.deep.equal(findOneResult);
+      sinon.restore();
       sinon.restore();
     });
   });

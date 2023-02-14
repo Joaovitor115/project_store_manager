@@ -27,7 +27,11 @@ const result = await productsService.getAll()
 
   describe('', function () {
     it('', async function () {
-     
+      sinon.stub(productModel, 'CreateProduct').resolves(findOneResult)
+      const result = await productsService.CreateProduct(findOneResult.name)
+      expect(result.type).to.equal(null)
+      expect(result.message).to.be.deep.equal(findOneResult)
+      expect(result).to.be.deep.equal({ type: null, message: findOneResult })
       sinon.restore();
     });
   });
