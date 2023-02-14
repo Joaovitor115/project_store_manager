@@ -11,6 +11,13 @@ const getById = async (id) => {
   }
   return { type: null, message: result };
 };
+const getByName = async (name) => {
+  const result = await productsModel.getByName(name);
+  if (!result) {
+    return { type: 'error', message: 'Product_not_found' };
+  }
+  return { type: null, message: result };
+};
 const CreateProduct = async (name) => {
   const result = await productsModel.CreateProduct(name);
   if (!result) {
@@ -44,4 +51,5 @@ module.exports = {
   CreateProduct,
   updateProduct,
   deleteProduct,
+  getByName,
 };
