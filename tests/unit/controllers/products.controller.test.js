@@ -44,7 +44,7 @@ describe('Verificando service products', function () {
   });
 
   describe('', function () {
-    it('', async function () {
+    it('testa a função createProduct com erro', async function () {
       req = {}
       const res = {}
       res.status = sinon.stub().returns(res);
@@ -58,7 +58,7 @@ describe('Verificando service products', function () {
     });
   });
 
-  describe('', function () {
+  describe('testa a função createProduct', function () {
     it('', async function () {
       req = {}
       const res = {}
@@ -71,6 +71,20 @@ describe('Verificando service products', function () {
       expect(response.body).to.be.deep.equal(findOneResult);
       sinon.restore();
       sinon.restore();
+    });
+  });
+  describe('testa a função getByName', function () {
+    it('', async function () {
+      req = {
+        body: {
+          name: findOneResult.name
+      }}
+      const res = {}
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns(res);
+      const response = await productsController.getByName(req, res);
+      sinon.restore();
+
     });
   });
 

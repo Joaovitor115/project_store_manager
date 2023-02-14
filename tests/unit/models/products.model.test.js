@@ -34,10 +34,13 @@ describe('Testes de unidade do model de products', function () {
     expect(result).to.be.deep.equal(modelMock.findOneResult);
   });
    it('', async function () {
-   
+     sinon.stub(connection, "execute").resolves()
+     const result = await productModel.deleteProduct()
+     
   });
    it('', async function () {
-   
+     sinon.stub(connection, "execute").resolves()
+     const result = await productModel.updateProduct()
   });
 
   afterEach(function () {

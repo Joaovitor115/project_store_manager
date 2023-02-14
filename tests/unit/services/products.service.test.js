@@ -55,8 +55,14 @@ const result = await productsService.getAll()
     });
   });
   describe('', function () {
-    it('', async function () {
+    it('testa deleteProduct', async function () {
+      sinon.stub(productModel, 'deleteProduct').resolves({ type: 'error', message: 'Product not found' })
+      sinon.stub(productModel, 'getById').resolves()
+
+      const { message } = productsService.deleteProduct(4092304)
+   
      
+
     });
   }); describe('', function () {
     it('', async function () {
